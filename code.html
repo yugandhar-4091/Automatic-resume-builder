@@ -1,54 +1,68 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Resume Builder | ATS Friendly</title>
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>ATS Resume Builder</title>
+  <link rel="stylesheet" href="style.css"/>
 </head>
 <body>
   <div class="container">
-    <h1><u>Resume Builder</u></h1>
-    <form id="resumeForm">
-      <!-- Personal Info -->
+    <h1>ATS Resume Builder</h1>
+
+    <!-- Form -->
+    <form id="resumeForm" class="form-container" data-watermark="Your Name">
       <h2>Personal Information</h2>
-      <input type="text" id="name" placeholder="Full Name" required>
-      <input type="email" id="email" placeholder="Email" required>
-      <input type="text" id="phone" placeholder="Phone Number" required>
-      <input type="text" id="linkedin" placeholder="LinkedIn Profile">
-      <input type="text" id="github" placeholder="GitHub Profile">
+      <input type="text" id="name" placeholder="Full Name" required />
+      <input type="email" id="email" placeholder="Email" required />
+      <input type="text" id="phone" placeholder="Phone Number" required />
+      <input type="text" id="linkedin" placeholder="LinkedIn Profile URL" />
+      <input type="text" id="github" placeholder="GitHub Profile URL" />
 
-      <!-- Summary -->
       <h2>Professional Summary</h2>
-      <textarea id="summary" placeholder="2-3 lines summary of your skills & experience"></textarea>
+      <textarea id="summary" placeholder="lines summary of your skills & experience"></textarea>
 
-      <!-- Skills -->
       <h2>Skills (comma separated)</h2>
-      <input type="text" id="skills" placeholder="Python, JavaScript, SQL, React">
+      <input type="text" id="skills" placeholder="Python, JavaScript, SQL, React" />
 
-      <!-- Education -->
       <h2>Education</h2>
-      <textarea id="education" placeholder="E.g. B.Tech in CSE, University Name, Year, CGPA"></textarea>
+      <textarea id="education" placeholder="B.Tech in CSE — University, Year — CGPA"></textarea>
 
-      <!-- Experience -->
       <h2>Experience</h2>
-      <textarea id="experience" placeholder="E.g. Internship at XYZ Company, Role, Duration, Key Work"></textarea>
+      <textarea id="experience" placeholder="Role — Company — Duration
+• Achievement 1
+• Achievement 2"></textarea>
 
-      <!-- Projects -->
       <h2>Projects</h2>
-      <textarea id="projects" placeholder="Project Title - Tech Used - Short Description"></textarea>
+      <textarea id="projects" placeholder="Project Title — Tech — Description
+Project Title — Tech — Description"></textarea>
 
-      <!-- Certifications -->
       <h2>Certifications</h2>
-      <textarea id="certs" placeholder="Certification Name - Provider"></textarea>
+      <textarea id="certs" placeholder="Certification — Provider
+Certification — Provider"></textarea>
 
-      <button type="submit">Generate Resume</button>
+      <div class="actions">
+        <button type="submit">Generate Resume</button>
+        <button type="button" id="clearBtn">Clear</button>
+      </div>
     </form>
 
-    <!-- Resume Preview -->
-    <div id="resumePreview"></div>
-    <button id="downloadBtn" onclick="downloadPDF()">⬇ Download as PDF</button>
+    <!-- Preview -->
+<section class="preview-wrap">
+  <div class="preview-header">
+    <h2>Resume Preview</h2>
+    <div class="download-toolbar">
+      <button type="button" onclick="downloadPDF()" class="download-btn">⬇ PDF</button>
+      <button type="button" onclick="downloadPNG()" class="download-btn">🖼 PNG</button>
+      <button type="button" onclick="downloadDOCX()" class="download-btn">📝 DOCX</button>
+    </div>
   </div>
+
+  <div id="resumePreview" class="resume-template">
+    <p class="placeholder">Fill the form and click “Generate Resume” to see a preview here.</p>
+  </div>
+</section>
+
 
   <!-- PDF Library -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.3/html2pdf.bundle.min.js"></script>

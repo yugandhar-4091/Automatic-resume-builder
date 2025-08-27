@@ -1,88 +1,185 @@
-/* General */
-body {
-  font-family: "Segoe UI", Tahoma, sans-serif;
-  background: #f4f7fb;
-  margin: 0;
-  padding: 0;
-  color: #333;
+/* Base */
+* { box-sizing: border-box; }
+:root {
+  --accent: #0a66c2;     /* LinkedIn blue */
+  --ink: #222;
+  --muted: #666;
+  --bg: #f5f7fb;
+  --card: #ffffff;
 }
 
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  line-height: 1.55;
+}
+
+h1, h2 { margin: 0 0 10px; }
+
 .container {
-  max-width: 900px;
-  margin: 20px auto;
-  background: #fff;
-  padding: 25px;
-  border-radius: 10px;
-  box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+  max-width: 1000px;
+  margin: 24px auto;
+  padding: 0 16px;
 }
 
 h1 {
   text-align: center;
-  color: #2c3e50;
-}
-
-form h2 {
-  margin-top: 20px;
-  font-size: 18px;
-  color: #0077b6;
-}
-
-input, textarea, button {
-  width: 100%;
-  padding: 10px;
-  margin-top: 8px;
-  margin-bottom: 15px;
-  border: 1px solid #ccc;
-  border-radius: 6px;
-  font-size: 14px;
-}
-
-button {
-  background: #0077b6;
-  color: white;
-  border: none;
-  cursor: pointer;
-  font-weight: bold;
-  transition: 0.3s;
-}
-
-button:hover {
-  background: #023e8a;
-}
-
-/* Resume Preview */
-#resumePreview {
-  margin-top: 30px;
-  padding: 25px;
-  background: #fff;
-}
-
-/* Resume Template */
-.resume-template header {
-  text-align: center;
-  border-bottom: 2px solid #0077b6;
-  padding-bottom: 10px;
+  color: var(--accent);
+  font-size: 28px;
   margin-bottom: 20px;
 }
 
-.resume-template h1 {
-  font-size: 24px;
-  margin-bottom: 5px;
+/* Form */
+.form-container {
+  position: relative;
+  background: var(--card);
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+  border: 1px solid #e9eef5;
+  overflow: hidden;
 }
 
-.resume-template a {
-  color: #0077b6;
-  text-decoration: none;
+.form-container h2 {
+  color: var(--accent);
+  font-size: 16px;
+  margin: 18px 0 8px;
 }
 
-.resume-template h2 {
-  color: #0077b6;
+input, textarea {
+  width: 100%;
+  font-size: 14px;
+  padding: 10px 12px;
+  border: 1px solid #cfd8e3;
+  border-radius: 8px;
+  margin-bottom: 12px;
+  outline: none;
+}
+
+input:focus, textarea:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(10,102,194,0.12);
+}
+
+textarea { min-height: 90px; resize: vertical; }
+
+.actions {
+  display: flex; gap: 10px; margin-top: 10px;
+}
+
+button {
+  flex: 1;
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  padding: 12px;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+button:hover { background: #084f9c; }
+#clearBtn { background: #e1e8f0; color: #0b1b2b; }
+#clearBtn:hover { background: #d6e1eb; }
+
+/* Watermark ONLY in form (top-right corner) */
+.form-container::after {
+  content: attr(data-watermark);
+  position: absolute;
+  top: 10px;
+  right: 14px;
+  font-size: 14px;
+  color: rgba(10,102,194,0.25);
+  font-weight: bold;
+  pointer-events: none;
+}
+
+/* Preview */
+.preview-wrap {
+  margin-top: 20px;
+  background: var(--card);
+  border: 1px solid #e9eef5;
+  border-radius: 12px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+  padding: 18px;
+}
+
+.preview-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.preview-header h2 {
+  color: var(--accent);
   font-size: 18px;
-  margin-top: 15px;
-  border-bottom: 1px solid #ddd;
+  margin: 0;
+}
+
+#resumePreview {
+  background: #fff;
+  padding: 24px;
+  font-size: 14px;
+}
+
+.resume-header {
+  text-align: center;
+  border-bottom: 2px solid var(--accent);
+  margin-bottom: 16px;
+  padding-bottom: 6px;
+}
+
+.resume-header h1 {
+  font-size: 22px;
+  margin: 0;
+}
+
+.resume-header .meta {
+  font-size: 13px;
+  color: var(--muted);
+}
+
+.section {
+  margin-bottom: 14px;
+}
+
+.section h3 {
+  color: var(--accent);
+  font-size: 16px;
+  margin: 0 0 6px;
+  border-bottom: 1px solid #e7ebf0;
   padding-bottom: 4px;
 }
 
-.resume-template ul {
-  margin: 5px 0 15px 20px;
+.section p, .section ul { margin: 0; font-size: 14px; }
+.section ul { margin: 6px 0 0 18px; }
+
+/* Responsive */
+@media (max-width: 768px) {
+  .actions { flex-direction: column; }
+}
+.download-toolbar {
+  display: flex;
+  gap: 10px;
+}
+
+.download-btn {
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.download-btn:hover {
+  background: #084f9c;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
 }
