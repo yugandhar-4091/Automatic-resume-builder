@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Resume Builder | ATS Friendly</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <h1><u>Resume Builder</u></h1>
+    <form id="resumeForm">
+      <!-- Personal Info -->
+      <h2>Personal Information</h2>
+      <input type="text" id="name" placeholder="Full Name" required>
+      <input type="email" id="email" placeholder="Email" required>
+      <input type="text" id="phone" placeholder="Phone Number" required>
+      <input type="text" id="linkedin" placeholder="LinkedIn Profile">
+      <input type="text" id="github" placeholder="GitHub Profile">
+
+      <!-- Summary -->
+      <h2>Professional Summary</h2>
+      <textarea id="summary" placeholder="2-3 lines summary of your skills & experience"></textarea>
+
+      <!-- Skills -->
+      <h2>Skills (comma separated)</h2>
+      <input type="text" id="skills" placeholder="Python, JavaScript, SQL, React">
+
+      <!-- Education -->
+      <h2>Education</h2>
+      <textarea id="education" placeholder="E.g. B.Tech in CSE, University Name, Year, CGPA"></textarea>
+
+      <!-- Experience -->
+      <h2>Experience</h2>
+      <textarea id="experience" placeholder="E.g. Internship at XYZ Company, Role, Duration, Key Work"></textarea>
+
+      <!-- Projects -->
+      <h2>Projects</h2>
+      <textarea id="projects" placeholder="Project Title - Tech Used - Short Description"></textarea>
+
+      <!-- Certifications -->
+      <h2>Certifications</h2>
+      <textarea id="certs" placeholder="Certification Name - Provider"></textarea>
+
+      <button type="submit">Generate Resume</button>
+    </form>
+
+    <!-- Resume Preview -->
+    <div id="resumePreview"></div>
+    <button id="downloadBtn" onclick="downloadPDF()">⬇ Download as PDF</button>
+  </div>
+
+  <!-- PDF Library -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.3/html2pdf.bundle.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
